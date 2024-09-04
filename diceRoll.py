@@ -21,12 +21,14 @@ while True:
         diceType = int(input("\nPlease enter dice type: d"))
         diceAmount = int(input("Please enter dice amount: "))
         diceModifier = int(input("Please enter any modifier (enter 0 if none): "))
+        diceCheck = ("\n(y/n) Is this correct? " + str(diceAmount) + "d" + str(diceType))
+        # Inputs are finished and check text is generated
         while True:
             if diceModifier >> 0:
-                correct = input("\nIs this correct? " + str(diceAmount) + "d" + str(diceType) + "+" + str(diceModifier) + " (y/n) ")
+                correct = input(diceCheck + "+" + str(diceModifier) + "  ")
                 # Line for if a modifier is added
             else:
-                correct = input("\nIs this correct? " + str(diceAmount) + "d" + str(diceType) + " (y/n) ")
+                correct = input(diceCheck + "  ")
                 # Line for if a modifier is not added
             if correct == "y":
                 print()
@@ -64,7 +66,7 @@ while True:
     # Calculating the average roll
     print("\nFinal roll: " + str(finalRoll))
     print("Average roll: " + str(averageRoll))
-    print("\n\nPress the 'Enter' key to reroll.")
+    print("\n\nPress the 'Enter' key to re-roll.")
     keyboard.wait('Enter')
     input()
     # This line prevents the program from breaking.
