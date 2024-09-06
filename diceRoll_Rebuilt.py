@@ -67,8 +67,8 @@ def diceRolling():
 
 
 def diceAddup():
-    global diceModifier, rollCount, finalRoll, averageRoll
-    averageRoll = (finalRoll - diceModifier) // rollCount
+    global diceModifier, diceAmount, finalRoll, averageRoll
+    averageRoll = (finalRoll - diceModifier) // diceAmount
     # Calculating the average roll
     print("\nFinal roll: " + str(finalRoll))
     print("Average roll: " + str(averageRoll))
@@ -76,7 +76,7 @@ def diceAddup():
 
 
 def rollAgain():
-    global rollCount
+    global rollCount, finalRoll, averageRoll, diceCounting
     while True:
         moreDice = input("(y/n) Roll again? ")
         if moreDice == "y" or "n":
@@ -85,6 +85,9 @@ def rollAgain():
             print()
     if moreDice == "y":
         rollCount = 0
+        finalRoll = 0
+        averageRoll = 0
+        diceCounting = True
         diceInput()
     else:
         print()
