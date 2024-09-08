@@ -1,4 +1,5 @@
 import random
+import time
 
 diceType = 0
 diceAmount = 0
@@ -9,11 +10,12 @@ finalRoll = 0
 averageRoll = 0
 correct = ""
 diceCounting = True
+version = "0.2.5"
 
 
 def diceInput():
     global diceType, diceAmount, diceModifier
-    diceType = int(input("\nPlease enter dice type: d"))
+    diceType = int(input("Please enter dice type: d"))
     diceAmount = int(input("Please enter dice amount: "))
     diceModifier = int(input("Please enter any modifier (enter 0 if none): "))
     diceConfirm()
@@ -63,6 +65,7 @@ def diceAddup():
 def rollAgain():
     #replaces messed up "repeat" function from original
     global rollCount, finalRoll, averageRoll, diceCounting
+    time.sleep(3)
     while True:
         moreDice = input("(y/n) Roll again? ")
         if moreDice == "y":
@@ -76,8 +79,10 @@ def rollAgain():
         finalRoll = 0
         averageRoll = 0
         diceCounting = True
+        print("\n")
         diceInput()
     else:
         print()
 
+print("DnD Dice Roller ver" + version)
 diceInput()
