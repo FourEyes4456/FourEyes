@@ -16,17 +16,23 @@ def diceInput():
     diceType = int(input("\nPlease enter dice type: d"))
     diceAmount = int(input("Please enter dice amount: "))
     diceModifier = int(input("Please enter any modifier (enter 0 if none): "))
+    diceConfirm()
+   
+def diceConfirm():
+    #replaces original confirmation code
+    global diceType, diceAmount, diceModifier
     diceCheck = ("\n(y/n) Is this correct? " + str(diceAmount) + "d" + str(diceType))
     while True:
         if diceModifier >> 0:
             correct = input(diceCheck + "+" + str(diceModifier) + "  ")
         else:
             correct = input(diceCheck + "  ")
-        if correct == "y" or "n":
-            print()
+        if correct == "y":
+            break
+        elif correct == "n":
             break
         else:
-            print()
+            print("If you see this, this is broken.")
     if correct == "y":
         diceRolling()
     else:
@@ -55,13 +61,16 @@ def diceAddup():
     rollAgain()
 
 def rollAgain():
+    #replaces messed up "repeat" function from original
     global rollCount, finalRoll, averageRoll, diceCounting
     while True:
         moreDice = input("(y/n) Roll again? ")
-        if moreDice == "y" or "n":
+        if moreDice == "y":
+            break
+        elif moreDice == "n":
             break
         else:
-            print()
+            rollAgain()
     if moreDice == "y":
         rollCount = 0
         finalRoll = 0
