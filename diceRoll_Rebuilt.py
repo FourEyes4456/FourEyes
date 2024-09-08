@@ -84,4 +84,5 @@ def rollAgain():
         print()
 
 print("DnD Dice Roller ver" + version)
+time.sleep(1)
 diceInput()
