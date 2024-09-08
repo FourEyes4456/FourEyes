@@ -9,7 +9,7 @@ singleRoll = 0
 finalRoll = 0
 averageRoll = 0
 diceCounting = True
-version = "0.2.6"
+version = "0.2.7"
 
 
 def diceInput():
@@ -64,9 +64,9 @@ def diceAddup():
 def rollAgain():
     #replaces messed up "repeat" function from original
     global rollCount, finalRoll, averageRoll, diceCounting
-    time.sleep(3)
+    time.sleep(2)
     while True:
-        moreDice = input("(y/n) Roll again? ")
+        moreDice = input("\n(y/n) Roll again? ")
         if moreDice == "y":
             break
         elif moreDice == "n":
