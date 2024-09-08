@@ -8,9 +8,8 @@ rollCount = 0
 singleRoll = 0
 finalRoll = 0
 averageRoll = 0
-correct = ""
 diceCounting = True
-version = "0.2.5"
+version = "0.2.6"
 
 
 def diceInput():
