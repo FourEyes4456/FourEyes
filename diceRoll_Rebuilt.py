@@ -9,7 +9,7 @@ rollCount = 0
 singleRoll = 0
 finalRoll = 0
 averageRoll = 0
-version = "0.2.7"
+version = "0.2.9"
 
 """
 To Do:
