@@ -9,7 +9,6 @@ rollCount = 0
 singleRoll = 0
 finalRoll = 0
 averageRoll = 0
-diceCounting = True
 version = "0.2.7"
 
 """
@@ -27,7 +26,7 @@ def diceInput():
     diceConfirm()
    
 def diceConfirm():
-    # Replaces original confirmation code, allows repeats if not
+    # Replaces original confirmation code. Allows repeating dice input if incorrect.
     global diceType, diceAmount, diceModifier
     diceCheck = ("\n(y/n) Is this correct? " + str(diceAmount) + "d" + str(diceType))
     while True:
@@ -47,7 +46,10 @@ def diceConfirm():
         diceInput()
 
 def diceRolling():
+    # "Rolls" the selected dice, along with displaying rolls and totals.
     global rollCount, singleRoll, finalRoll, diceCounting
+    diceCounting = True
+    print("\n")
     while diceCounting is True:
         if int(rollCount) <= int(diceAmount)-1:
             singleRoll = random.randint(1, int(diceType))
@@ -62,29 +64,33 @@ def diceRolling():
     diceAddup()
 
 def diceAddup():
+    # Calculates the average roll
     global diceModifier, diceAmount, finalRoll, averageRoll
     averageRoll = (finalRoll - diceModifier) // diceAmount
     print("\nFinal roll: " + str(finalRoll))
     print("Average roll: " + str(averageRoll))
+    time.sleep(2)
     rollAgain()
 
 def rollAgain():
-    #replaces messed up "repeat" function from original
-    global rollCount, finalRoll, averageRoll, diceCounting
-    time.sleep(2)
+    # Provides user the chance to rerun the program.
+    global rollCount, singleRoll, finalRoll
+    rollCount = 0
+    singleRoll = 0
+    finalRoll = 0
     while True:
-        moreDice = input("\n(y/n) Roll again? ")
-        if moreDice == "y":
+        moreDice = str(input("\n1) Roll the same dice again.\n2) Roll different dice.\n3) Exit.\n: "))
+        if moreDice == "1":
             break
-        elif moreDice == "n":
+        elif moreDice == "2":
+            break
+        elif moreDice == "3":
             break
         else:
-            rollAgain()
-    if moreDice == "y":
-        rollCount = 0
-        finalRoll = 0
-        averageRoll = 0
-        diceCounting = True
+            print("Input not recognized, please try again.")
+    if moreDice == "1":
+        diceRolling()
+    if moreDice == "2":
         print("\n")
         diceInput()
     else:
