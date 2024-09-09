@@ -15,6 +15,7 @@ version = "0.2.7"
 To Do:
 * Figure out a way to replace the constant "global" variables within every function
 * Simplify the if-elif-else functions within the diceConfirm / rollAgain functions
+
 """
 
 def diceInput():
@@ -90,7 +91,7 @@ def rollAgain():
             print("Input not recognized, please try again.")
     if moreDice == "1":
         diceRolling()
-    if moreDice == "2":
+    elif moreDice == "2":
         print("\n")
         diceInput()
     else:
