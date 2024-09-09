@@ -1,6 +1,7 @@
 import random
 import time
 
+
 diceType = 0
 diceAmount = 0
 diceModifier = 0
@@ -11,8 +12,14 @@ averageRoll = 0
 diceCounting = True
 version = "0.2.7"
 
+"""
+To Do:
+* Figure out a way to replace the constant "global" variables within every function
+* Simplify the if-elif-else functions within the diceConfirm / rollAgain functions
+"""
 
 def diceInput():
+    # Provides user input for the dice rolls
     global diceType, diceAmount, diceModifier
     diceType = int(input("Please enter dice type: d"))
     diceAmount = int(input("Please enter dice amount: "))
@@ -20,7 +27,7 @@ def diceInput():
     diceConfirm()
    
 def diceConfirm():
-    #replaces original confirmation code
+    # Replaces original confirmation code, allows repeats if not
     global diceType, diceAmount, diceModifier
     diceCheck = ("\n(y/n) Is this correct? " + str(diceAmount) + "d" + str(diceType))
     while True:
@@ -33,11 +40,11 @@ def diceConfirm():
         elif correct == "n":
             break
         else:
-            print("If you see this, this is broken.")
+            print("Input not recognized, please try again.")
     if correct == "y":
         diceRolling()
     else:
-        print()
+        diceInput()
 
 def diceRolling():
     global rollCount, singleRoll, finalRoll, diceCounting
