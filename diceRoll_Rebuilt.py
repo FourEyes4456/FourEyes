@@ -31,6 +31,7 @@ def diceConfirm():
     global diceType, diceAmount, diceModifier
     diceCheck = ("\n(y/n) Is this correct? " + str(diceAmount) + "d" + str(diceType))
     while True:
+        # Provides a loopback point in the case of invalid input
         if diceModifier >> 0:
             correct = input(diceCheck + "+" + str(diceModifier) + "  ")
         else:
@@ -41,6 +42,7 @@ def diceConfirm():
             break
         else:
             print("Input not recognized, please try again.")
+            # Invalid Input check
     if correct == "y":
         diceRolling()
     else:
@@ -80,7 +82,8 @@ def rollAgain():
     singleRoll = 0
     finalRoll = 0
     while True:
-        moreDice = str(input("\n1) Roll the same dice again.\n2) Roll different dice.\n3) Exit.\n: "))
+        # Provides a loopback point in the case of invalid input
+        moreDice = str(input("\n1) Roll the same dice again.\n2) Roll different dice.\n3) Exit.\nEnter: "))
         if moreDice == "1":
             break
         elif moreDice == "2":
@@ -89,6 +92,7 @@ def rollAgain():
             break
         else:
             print("Input not recognized, please try again.")
+            # Invalid Input check
     if moreDice == "1":
         diceRolling()
     elif moreDice == "2":
