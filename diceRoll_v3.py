@@ -9,13 +9,47 @@ def diceSelect(diceInfo):
     except:
         print("Values must be a number, enter again.")
         diceSelect(diceInfo)
-    if diceInfo[2] != 0:
-        dice
+    checking(diceInfo)
     return diceInfo
 
+
+def checking(diceInfo):
+    if diceInfo[2] != 0:
+        check = input("Is this correct: " + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "+" + str(diceInfo[2]) + "? (y/n) ")
+    else:
+        check = input("Is this correct: " + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "? (y/n)")
+    if check == "n" or check == "N":
+        diceSelect(diceInfo)
+    elif check == "y" or check == "Y":
+        print()
+    else:
+        print("Invalid input, please try again")
+        checking(diceInfo)
+        
+
+def rollDice(diceInfo):
+    total = 0
+    for number in range(1, diceInfo[1]+1):
+        roll = random.randrange(1, diceInfo[0]+1)
+        total += roll
+        print(roll, "-->", total)
+    if diceInfo[2] != 0:
+        total += diceInfo[2]
+        print("Modifier:", diceInfo[2], "-->", total)
+    return total
+
+
+def final_output(diceInfo, total):
+    print("\n\nFinal Roll:", total)
+    average = (total - diceInfo[2]) // diceInfo[1]
+    print("Average Roll:", average)
+    
+    
 def main():
     diceInfo = [0, 0, 0]
-    diceSelect(diceInfo) 
+    diceSelect(diceInfo)
+    total = rollDice(diceInfo)
+    final_output(diceInfo, total)
     
 
 if __name__ == "__main__":
