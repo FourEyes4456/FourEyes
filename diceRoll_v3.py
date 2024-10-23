@@ -27,7 +27,7 @@ def checking(diceInfo):
         checking(diceInfo)
         
 
-def rollDice(diceInfo):
+def rolling(diceInfo):
     total = 0
     for number in range(1, diceInfo[1]+1):
         roll = random.randrange(1, diceInfo[0]+1)
@@ -48,9 +48,13 @@ def final_output(diceInfo, total):
 def main():
     diceInfo = [0, 0, 0]
     diceSelect(diceInfo)
-    total = rollDice(diceInfo)
+    total = rolling(diceInfo)
     final_output(diceInfo, total)
     
+
+def rollDice():
+    main()
+
 
 if __name__ == "__main__":
     main()
