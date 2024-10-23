@@ -1,6 +1,8 @@
 import random
 
 
+
+
 def diceSelect(diceInfo):
     try:
         diceInfo[0] = int(input("Enter dice type: d"))
@@ -45,15 +47,14 @@ def final_output(diceInfo, total):
     print("Average Roll:", average)
     
     
-def main():
-    diceInfo = [0, 0, 0]
+def main(diceInfo = [0, 0, 0]):
     diceSelect(diceInfo)
     total = rolling(diceInfo)
     final_output(diceInfo, total)
     
 
-def rollDice():
-    main()
+def rollDice(diceInfo = [0, 0, 0]):
+    main(diceInfo)
 
 
 if __name__ == "__main__":
