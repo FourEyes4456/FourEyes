@@ -48,7 +48,8 @@ def final_output(diceInfo, total):
     
     
 def main(diceInfo = [0, 0, 0]):
-    diceSelect(diceInfo)
+    if diceInfo[0] == 0:
+        diceSelect(diceInfo)
     total = rolling(diceInfo)
     final_output(diceInfo, total)
     
