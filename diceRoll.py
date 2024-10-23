@@ -1,5 +1,14 @@
 import random
 
+# diceRoll.py - Version 3
+
+# File can be run standalone, however it is designed to run within other files.
+# If running from a separate file, call the "rollDice()" function.
+# A set of numbers can be passed through the rollDice function if already known.
+# Format for this is as follows:
+
+# [Type, Number, Modifier] --> [20, 5, 6]
+# This will roll 5 d20s and add 6 to the final number.
 
 
 
