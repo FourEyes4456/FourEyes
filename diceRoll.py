@@ -40,10 +40,14 @@ def checking(diceInfo):
 
 def rolling(diceInfo):
     total = 0
+    if diceInfo[2] != 0:
+        print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "+" + str(diceInfo[2]))
+    else:
+        print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]))
     for number in range(1, diceInfo[1]+1):
         roll = random.randrange(1, diceInfo[0]+1)
         total += roll
-        print(roll, "-->", total)
+        print(str(number) + ":", roll, "-->", total)
     if diceInfo[2] != 0:
         total += diceInfo[2]
         print("Modifier:", diceInfo[2], "-->", total)
