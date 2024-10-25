@@ -58,6 +58,7 @@ def final_output(diceInfo, total):
     print("\n\nFinal Roll:", total)
     average = (total - diceInfo[2]) // diceInfo[1]
     print("Average Roll:", average)
+    return total
     
     
 def main(diceInfo = [0, 0, 0]):
@@ -65,10 +66,12 @@ def main(diceInfo = [0, 0, 0]):
         diceSelect(diceInfo)
     total = rolling(diceInfo)
     final_output(diceInfo, total)
+    return total
     
 
 def rollDice(diceInfo = [0, 0, 0]):
-    main(diceInfo)
+    total = main(diceInfo)
+    return total
 
 
 if __name__ == "__main__":
