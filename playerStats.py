@@ -1,34 +1,21 @@
 import diceRoll
 
-playerName = "Levi"
-characterName = ""
-statList = [0, 0, 0, 0, 0, 0]
 
-stg = statList[0]
-stg_mod = (stg-10)//2
+def rollStats(statList, statMods):
+    for stat in statList:
+        statList[stat] = diceRoll.rollDice([10, 2, 0], False)
+    for stat in statMods:
+        statMods[stat] = (statList[stat]-10)//2
+    return statList, statMods
+    
 
-dex = statList[1]
-dex_mod = (dex-10)//2
-
-con = statList[2]
-con_mod = (con-10)//2
-
-itl = statList[3]
-itl_mod = (itl-10)//2
-
-wis = statList[4]
-wis_mod = (wis-10)//2
-
-chr = statList[5]
-chr_mod = (chr-10)//2
+def main():
+    statList = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
+    statMods = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
+    statList, statMods = rollStats(statList, statMods)
+    print(statList)
+    print(statMods)
 
 
-def rollStat(stat):
-    print(stat)
-    dice = [10, 2, 0]
-    stat = diceRoll.rollDice(dice)
-    return stat
-
-
-stg, dex, con, itl, wis, chr
-
+if __name__ == "__main__":
+    main()

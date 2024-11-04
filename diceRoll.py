@@ -38,19 +38,22 @@ def checking(diceInfo):
         checking(diceInfo)
         
 
-def rolling(diceInfo):
+def rolling(diceInfo, text=True):
     total = 0
-    if diceInfo[2] != 0:
-        print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "+" + str(diceInfo[2]))
-    else:
-        print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]))
+    if text is True:
+        if diceInfo[2] != 0:
+            print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "+" + str(diceInfo[2]))
+        else:
+            print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]))
     for number in range(1, diceInfo[1]+1):
         roll = random.randrange(1, diceInfo[0]+1)
         total += roll
-        print(str(number) + ":", roll, "-->", total)
+        if text is True:
+            print(str(number) + ":", roll, "-->", total)
     if diceInfo[2] != 0:
         total += diceInfo[2]
-        print("Modifier:", diceInfo[2], "-->", total)
+        if text is True:
+            print("Modifier:", diceInfo[2], "-->", total)
     return total
 
 
@@ -61,16 +64,22 @@ def final_output(diceInfo, total):
     return total
     
     
-def main(diceInfo = [0, 0, 0]):
+def main(diceInfo = [0, 0, 0], text=True):
     if diceInfo[0] == 0:
         diceSelect(diceInfo)
-    total = rolling(diceInfo)
-    final_output(diceInfo, total)
+    if text is True:
+        total = rolling(diceInfo)
+        final_output(diceInfo, total)
+    else:
+        total = rolling(diceInfo, False)
     return total
     
 
-def rollDice(diceInfo = [0, 0, 0]):
-    total = main(diceInfo)
+def rollDice(diceInfo = [0, 0, 0], text=True):
+    if text is True:
+        total = main(diceInfo)
+    else:
+        total = main(diceInfo, False)
     return total
 
 
