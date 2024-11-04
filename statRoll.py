@@ -9,6 +9,14 @@ def rollStats(statList, statMods):
     return statList, statMods
     
 
+def rollDamage(dice, number, modifier=0):
+    damage = 0
+    toRoll = [dice, number, modifier]
+    damage = diceRoll.rollDice(toRoll, False)
+    return damage
+
+
+
 def main():
     statList = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
     statMods = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}

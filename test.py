@@ -17,3 +17,5 @@ statRoll.rollStats(stats, modifiers)
 print(stats)
 print(modifiers)
 
+damage = statRoll.rollDamage(8, 2)
+print(damage)
