@@ -1,5 +1,5 @@
 import diceRoll
-import playerStats
+import statRoll
 
 r_5d20 = [20, 5, 0]
 r_5d20_6 = [20, 5, 6]
@@ -13,7 +13,7 @@ print("\nSilent Rolling")
 print(diceRoll.rollDice(r_5d20, False))
 print(diceRoll.rollDice(r_5d20_6, False))
 
-playerStats.rollStats(stats, modifiers)
+statRoll.rollStats(stats, modifiers)
 print(stats)
 print(modifiers)
 
