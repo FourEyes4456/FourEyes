@@ -12,74 +12,74 @@ import random
 
 
 
-def diceSelect(diceInfo):
+def diceSelect(dice_info):
     try:
-        diceInfo[0] = int(input("Enter dice type: d"))
-        diceInfo[1] = int(input("Enter number of dice to roll: "))
-        diceInfo[2] = int(input("Enter a roll modifier, enter 0 for none: "))
+        dice_info[0] = int(input("Enter dice type: d"))
+        dice_info[1] = int(input("Enter number of dice to roll: "))
+        dice_info[2] = int(input("Enter a roll modifier, enter 0 for none: "))
     except:
         print("Values must be a number, enter again.")
-        diceSelect(diceInfo)
-    checking(diceInfo)
-    return diceInfo
+        diceSelect(dice_info)
+    checking(dice_info)
+    return dice_info
 
 
-def checking(diceInfo):
-    if diceInfo[2] != 0:
-        check = input("Is this correct: " + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "+" + str(diceInfo[2]) + "? (y/n) ")
+def checking(dice_info):
+    if dice_info[2] != 0:
+        check = input("Is this correct: " + str(dice_info[1]) + "d" + str(dice_info[0]) + "+" + str(dice_info[2]) + "? (y/n) ")
     else:
-        check = input("Is this correct: " + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "? (y/n)")
+        check = input("Is this correct: " + str(dice_info[1]) + "d" + str(dice_info[0]) + "? (y/n)")
     if check == "n" or check == "N":
-        diceSelect(diceInfo)
+        diceSelect(dice_info)
     elif check == "y" or check == "Y":
         print()
     else:
         print("Invalid input, please try again")
-        checking(diceInfo)
+        checking(dice_info)
         
 
-def rolling(diceInfo, text=True):
+def rolling(dice_info, text=True):
     total = 0
     if text is True:
-        if diceInfo[2] != 0:
-            print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]) + "+" + str(diceInfo[2]))
+        if dice_info[2] != 0:
+            print("\n" + str(dice_info[1]) + "d" + str(dice_info[0]) + "+" + str(dice_info[2]))
         else:
-            print("\n" + str(diceInfo[1]) + "d" + str(diceInfo[0]))
-    for number in range(1, diceInfo[1]+1):
-        roll = random.randrange(1, diceInfo[0]+1)
+            print("\n" + str(dice_info[1]) + "d" + str(dice_info[0]))
+    for number in range(1, dice_info[1]+1):
+        roll = random.randrange(1, dice_info[0]+1)
         total += roll
         if text is True:
             print(str(number) + ":", roll, "-->", total)
-    if diceInfo[2] != 0:
-        total += diceInfo[2]
+    if dice_info[2] != 0:
+        total += dice_info[2]
         if text is True:
-            print("Modifier:", diceInfo[2], "-->", total)
+            print("Modifier:", dice_info[2], "-->", total)
     return total
 
 
-def final_output(diceInfo, total):
+def final_output(dice_info, total):
     print("\n\nFinal Roll:", total)
-    average = (total - diceInfo[2]) // diceInfo[1]
+    average = (total - dice_info[2]) // dice_info[1]
     print("Average Roll:", average)
     return total
     
     
-def main(diceInfo = [0, 0, 0], text=True):
-    if diceInfo[0] == 0:
-        diceSelect(diceInfo)
+def main(dice_info = [0, 0, 0], text=True):
+    if dice_info[0] == 0:
+        diceSelect(dice_info)
     if text is True:
-        total = rolling(diceInfo)
-        final_output(diceInfo, total)
+        total = rolling(dice_info)
+        final_output(dice_info, total)
     else:
-        total = rolling(diceInfo, False)
+        total = rolling(dice_info, False)
     return total
     
 
-def rollDice(diceInfo = [0, 0, 0], text=True):
+def rollDice(dice_info = [0, 0, 0], text=True):
     if text is True:
-        total = main(diceInfo)
+        total = main(dice_info)
     else:
-        total = main(diceInfo, False)
+        total = main(dice_info, False)
     return total
 
 
