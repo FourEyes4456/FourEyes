@@ -21,6 +21,14 @@ def roll_initiative(stat_mods):
     return initiative
 
 
+def roll_check(stat_mods):
+    stat = input("Enter stat: ")
+    if stat.lower() in stat_mods:
+        check = diceRoll.rollDice([20, 1, stat_mods[stat.lower()]], False)
+        return check
+    print("Stat does not exist, try again.")
+    roll_check(stat_mods)
+
 
 def main():
     stat_list = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
