@@ -1,5 +1,17 @@
 import diceRoll
 
+stat_list = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
+stat_mods = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
+
+stg_skills = ['athletics']
+dex_skills = ['acrobatics', 'sleight of hand', 'stealth']
+con_skills = []
+itl_skills = ['arcana', 'history', 'investigation', 'nature', 'religion']
+wis_skills = ['animal handling', 'insight', 'medicine', 'perception', 'survival']
+chr_skills = ['deception', 'intimidation', 'performance', 'persuasion']
+
+skill_list = {'stg':stg_skills, 'dex':dex_skills, 'con':con_skills, 'itl':itl_skills, 'wis':wis_skills, 'chr':chr_skills}
+
 
 def roll_stats(stat_list, stat_mods):
     for stat in stat_list:
@@ -21,24 +33,31 @@ def roll_initiative(stat_mods):
     return initiative
 
 
-def roll_check(stat_mods):
-    stat = input("Enter stat: ")
-    if stat.lower() in stat_mods:
-        check = diceRoll.rollDice([20, 1, stat_mods[stat.lower()]], False)
-        return check
-    print("Stat does not exist, try again.")
-    roll_check(stat_mods)
+def roll_check(stat_mods, skill_list, skill=""):
+    stat = ""
+    if skill == "":
+        skill = input("Enter skill to roll: ")
+    for elt in skill_list:
+        if skill in skill_list[elt]:
+            stat = elt
+    check = diceRoll.rollDice([20, 1, stat_mods[stat]], False)
+    return check
 
 
-def main():
-    stat_list = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
-    stat_mods = {"stg":0, "dex":0, "con":0, "itl":0, "wis":0, "chr":0}
+
+def main(stat_list, stat_mods, skill_list):
     stat_list, stat_mods = roll_stats(stat_list, stat_mods)
     print(stat_list)
     print(stat_mods)
 
     print(roll_initiative(stat_mods))
 
+    for stat in skill_list:
+        print(stat)
+        print(skill_list[stat])
+
+    print(roll_check(stat_mods, skill_list, 'deception'))
+
 
 if __name__ == "__main__":
-    main()
+    main(stat_list, stat_mods, skill_list)
