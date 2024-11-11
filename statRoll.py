@@ -38,6 +38,8 @@ def roll_check(stat_mods, skill_list, skill=""):
     if skill == "":
         skill = input("Enter skill to roll: ")
     for elt in skill_list:
+        if elt == skill:
+            stat = elt
         if skill in skill_list[elt]:
             stat = elt
     check = diceRoll.rollDice([20, 1, stat_mods[stat]], False)
@@ -46,17 +48,17 @@ def roll_check(stat_mods, skill_list, skill=""):
 
 
 def main(stat_list, stat_mods, skill_list):
-    stat_list, stat_mods = roll_stats(stat_list, stat_mods)
-    print(stat_list)
-    print(stat_mods)
+    # stat_list, stat_mods = roll_stats(stat_list, stat_mods)
+    # print(stat_list)
+    # print(stat_mods)
 
-    print(roll_initiative(stat_mods))
+    # print(roll_initiative(stat_mods))
 
-    for stat in skill_list:
-        print(stat)
-        print(skill_list[stat])
+    # for stat in skill_list:
+    #     print(stat)
+    #     print(skill_list[stat])
 
-    print(roll_check(stat_mods, skill_list, 'deception'))
+    print(roll_check(stat_mods, skill_list, 'stg'))
 
 
 if __name__ == "__main__":
